@@ -86,7 +86,8 @@ a, a:hover, a:active, a:visited {
 }
 .mobile #titleBar {
   height: 50px;
-  right: 50px;
+  left:30%;
+  width:40%
 }
 
 /* If there is a fullscreen button the title bar must make space for it */
@@ -201,7 +202,7 @@ body.fullscreen-enabled #autorotateToggle {
 }
 
 body.fullscreen-enabled.mobile #autorotateToggle {
-  right: 50px;
+  right: 4em;
 }
 
 #autorotateToggle .icon {
