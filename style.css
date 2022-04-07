@@ -88,12 +88,16 @@ a, a:hover, a:active, a:visited {
   font-size: 2em;
   color: grey;
   padding-left: 0.5em;
-  padding-top: 0.0;
+  padding-top: 0.25em;
   vertical-align: middle;
 }
 #attribution{
   font-size: 1em;
   color: darkgrey;
+}
+#load-logo{
+  width: 3em;
+  height: 3em;
 }
 
 #pano {
