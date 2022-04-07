@@ -21,7 +21,18 @@
 
     <body>
         <div class="loader">
-            <image class="loading" src="img\spinner.gif"></image>
+            <div>
+                <p class="loading text">
+                    <image src="img\favicon.ico"></image>
+                    <b id="load-text"> AVBIL Virtual Tour</b>
+                </p>
+                <p class="loading load-img">
+                    <image src="img\spinner.gif"></image>
+                </p>
+                <p id="attribution" class="loading text">
+                    Made by Lakshyajeet Singh Jalal
+                </p>
+            </div>
         </div>
 
         <div class="content multiple-scenes view-control-buttons">
@@ -733,18 +744,18 @@
                 <img class="icon off" src="img/expand.png" />
                 <img class="icon on" src="img/collapse.png" />
             </a>
-            <script>
-                $(window).on("load", function () {
-                    $(".loading").fadeOut(200);
-                    $(".loader").fadeOut(1000);
-                });
-            </script>
-            <script src="vendor/screenfull.min.js"></script>
-            <script src="vendor/bowser.min.js"></script>
-            <script src="vendor/marzipano.js"></script>
-
-            <script src="data.js"></script>
-            <script src="index.js"></script>
         </div>
+        <script>
+            $(window).on("load", function () {
+                $(".loading").fadeOut(200);
+                $(".loader").fadeOut(1000);
+            });
+        </script>
+        <script src="vendor/screenfull.min.js"></script>
+        <script src="vendor/bowser.min.js"></script>
+        <script src="vendor/marzipano.js"></script>
+
+        <script src="data.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>
