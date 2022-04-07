@@ -5,7 +5,7 @@ var info_data = {
     bk_birla: "Portrait of the Founder of the school",
     prin_off: "Office of the Principal",
     recp: "Reception Desk",
-    sarasvati_statue: "Stature of Maa Sarasvati",
+    sarasvati_statue: "Statue of Maa Sarasvati",
 };
 
 var APP_DATA = {
