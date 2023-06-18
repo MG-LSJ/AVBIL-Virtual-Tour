@@ -1,761 +1,773 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>AVBIL Virtual Tour</title>
-        <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"
-        />
-        <style>
-            @-ms-viewport {
-                width: device-width;
-            }
-        </style>
-        <link rel="stylesheet" href="vendor/reset.min.css" />
-        <link rel="stylesheet" href="style.css" />
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-
-    <body>
-        <div class="loader">
-            <div>
-                <p class="loading text">
-                    <image id="load-logo" src="img\logo.png"></image>
-                    <b id="load-text"> AVBIL Virtual Tour</b>
-                </p>
-                <p class="loading load-img">
-                    <image src="img\spinner.gif"></image>
-                </p>
-                <p id="attribution" class="loading text">
-                    Made by Lakshyajeet Singh Jalal
-                </p>
-            </div>
-        </div>
-
-        <div class="content multiple-scenes view-control-buttons">
-            <div id="pano"></div>
-
-            <div id="sceneList">
-                <ul class="scenes">
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="0-main-entrance"
-                    >
-                        <li class="text">Main Entrance</li>
-                    </a>
-
-                    <a href="javascript:void(0)" class="scene" data-id="1-gate">
-                        <li class="text">Gate</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="2-parking"
-                    >
-                        <li class="text">Parking</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="3-side-entrance-a1"
-                    >
-                        <li class="text">Side Entrance A1</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="4-side-entrance-a2"
-                    >
-                        <li class="text">Side Entrance A2</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="5-side-entrance-a3"
-                    >
-                        <li class="text">Side Entrance A3</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="6-1st-floor-north-west"
-                    >
-                        <li class="text">1st Floor North West</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="7-1sr-floor-north"
-                    >
-                        <li class="text">1sr Floor North</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="8-1st-floor-north-east"
-                    >
-                        <li class="text">1st Floor North East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="9-staircase-b----1st-floor"
-                    >
-                        <li class="text">Staircase B - 1st Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="10-1st-floor-east"
-                    >
-                        <li class="text">1st Floor East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="11-tap-area-b---1st-floor"
-                    >
-                        <li class="text">Tap Area B - 1st Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="12-ramp---1st-floor"
-                    >
-                        <li class="text">Ramp - 1st Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="13-1st-floor-south-east"
-                    >
-                        <li class="text">1st Floor South East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="14-1st-floor-south"
-                    >
-                        <li class="text">1st Floor South</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="15-1st-floor-south-west"
-                    >
-                        <li class="text">1st Floor South West</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="16-staircase-a---1st-floor"
-                    >
-                        <li class="text">Staircase A - 1st Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="17-1st-floor-west-a"
-                    >
-                        <li class="text">1st Floor West A</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="18-tap-area-a---1st-floor"
-                    >
-                        <li class="text">Tap Area A - 1st Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="19-1st-floor-west-b"
-                    >
-                        <li class="text">1st Floor West B</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="20-vp-office-area-staircase"
-                    >
-                        <li class="text">VP Office Area Staircase</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="21-vp-office-area"
-                    >
-                        <li class="text">VP Office Area</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="22-entrance-hall"
-                    >
-                        <li class="text">Entrance Hall</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="23-entrance-hall-staircase"
-                    >
-                        <li class="text">Entrance Hall Staircase</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="24-entrance-hall-sarasvati-stutue"
-                    >
-                        <li class="text">Entrance Hall Sarasvati Stutue</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="25-ground-floor-north-west"
-                    >
-                        <li class="text">Ground Floor North West</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="26-ground-floor-north"
-                    >
-                        <li class="text">Ground Floor North</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="27-ground-floor-north-east"
-                    >
-                        <li class="text">Ground Floor North East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="28-staircase-b---ground-floor"
-                    >
-                        <li class="text">Staircase B - Ground Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="29-ground-floor-east"
-                    >
-                        <li class="text">Ground Floor East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="30-tap-area-b---ground-floor"
-                    >
-                        <li class="text">Tap Area B - Ground Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="31-ramp---ground-floor"
-                    >
-                        <li class="text">Ramp - Ground Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="32-ground-floor-south-east"
-                    >
-                        <li class="text">Ground Floor South East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="33-ground-floor-south"
-                    >
-                        <li class="text">Ground Floor South</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="34-ground-floor-south-west"
-                    >
-                        <li class="text">Ground Floor South West</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="35-staircase-a---ground-floor"
-                    >
-                        <li class="text">Staircase A - Ground Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="36-ground-floor-west-a"
-                    >
-                        <li class="text">Ground Floor West A</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="37-tap-area-a---ground-floor"
-                    >
-                        <li class="text">Tap Area A - Ground Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="38-ground-floor-west-b"
-                    >
-                        <li class="text">Ground Floor West B</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="39-mad-wing-1"
-                    >
-                        <li class="text">MAD Wing 1</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="40-mad-wing-2"
-                    >
-                        <li class="text">MAD Wing 2</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="41-av-room"
-                    >
-                        <li class="text">A.V. Room</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="42-biology-lab"
-                    >
-                        <li class="text">Biology Lab</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="43-chemistry-lab"
-                    >
-                        <li class="text">Chemistry Lab</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="44-computer-lab-junior"
-                    >
-                        <li class="text">Computer Lab (Junior)</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="45-computer-lab-senior"
-                    >
-                        <li class="text">Computer Lab (Senior)</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="46-library"
-                    >
-                        <li class="text">Library</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="47-music-room-1"
-                    >
-                        <li class="text">Music Room 1</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="48-music-room-2"
-                    >
-                        <li class="text">Music Room 2</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="49-physics-lab"
-                    >
-                        <li class="text">Physics Lab</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="50-sick-room"
-                    >
-                        <li class="text">Sick Room</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="51-sports-room"
-                    >
-                        <li class="text">Sports Room</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="52-visitors-room"
-                    >
-                        <li class="text">Visitors&#39; Room</li>
-                    </a>
-
-                    <a href="javascript:void(0)" class="scene" data-id="53-mid">
-                        <li class="text">Mid</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="54-assembly-ground"
-                    >
-                        <li class="text">Assembly Ground</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="55-badminton-court"
-                    >
-                        <li class="text">Badminton Court</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="56-main-staircase-1-2"
-                    >
-                        <li class="text">Main Staircase 1-2</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="57-ramp-1-2"
-                    >
-                        <li class="text">Ramp 1-2</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="58-ramp-g-1"
-                    >
-                        <li class="text">Ramp G-1</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="59-main-staircase-g-1"
-                    >
-                        <li class="text">Main Staircase G-1</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="60-staircase-a-1-2"
-                    >
-                        <li class="text">Staircase A 1-2</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="61-staircase-a-g-1"
-                    >
-                        <li class="text">Staircase A G-1</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="62-staircase-b-1-2"
-                    >
-                        <li class="text">Staircase B 1-2</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="63-staircase-b-g-1"
-                    >
-                        <li class="text">Staircase B G-1</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="64-2nd-floor-north-west"
-                    >
-                        <li class="text">2nd Floor North West</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="65-2nd-floor-north"
-                    >
-                        <li class="text">2nd Floor North</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="66-2nd-floor-north-east"
-                    >
-                        <li class="text">2nd Floor North East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="67-staircase-b---2nd-floor"
-                    >
-                        <li class="text">Staircase B - 2nd Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="68-2nd-floor-east"
-                    >
-                        <li class="text">2nd Floor East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="69-tap-area-b---2nd-floor"
-                    >
-                        <li class="text">Tap Area B - 2nd Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="70-ramp---2nd-floor"
-                    >
-                        <li class="text">Ramp - 2nd Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="71-2nd-floor-south-east"
-                    >
-                        <li class="text">2nd Floor South East</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="72-2nd-floor-south"
-                    >
-                        <li class="text">2nd Floor South</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="73-2nd-floor-south-west"
-                    >
-                        <li class="text">2nd Floor South West</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="74-staircase-a---2nd-floor"
-                    >
-                        <li class="text">Staircase A - 2nd Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="75-2nd-floor-west-a"
-                    >
-                        <li class="text">2nd Floor West A</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="76-tap-area-a---2nd-floor"
-                    >
-                        <li class="text">Tap Area A - 2nd Floor</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="77-2nd-floor-west-b"
-                    >
-                        <li class="text">2nd Floor West B</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="78-computer-lab-area-staircase"
-                    >
-                        <li class="text">Computer Lab Area Staircase</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="79-computer-lab-area"
-                    >
-                        <li class="text">Computer Lab Area</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="80-science-lab-wing"
-                    >
-                        <li class="text">Science Lab Wing</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="81-side-entrance-b-1"
-                    >
-                        <li class="text">Side Entrance B 1</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="82-side-entrance-b-2"
-                    >
-                        <li class="text">Side Entrance B 2</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="83-side-entrance-b-3"
-                    >
-                        <li class="text">Side Entrance B 3</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="84-swings-area"
-                    >
-                        <li class="text">Swings Area</li>
-                    </a>
-
-                    <a
-                        href="javascript:void(0)"
-                        class="scene"
-                        data-id="85-side-entrance-b-south"
-                    >
-                        <li class="text">Side Entrance B South</li>
-                    </a>
-                </ul>
-            </div>
-
-            <div id="titleBar">
-                <h1 class="sceneName"></h1>
-            </div>
-
-            <a href="https://avbil.net/" target="_blank">
-                <img class="logo-png" src="img/logo.png" />
-            </a>
-
-            <a href="javascript:void(0)" id="autorotateToggle">
-                <img class="icon off" src="img/play.png" />
-                <img class="icon on" src="img/pause.png" />
-            </a>
-
-            <a href="javascript:void(0)" id="fullscreenToggle">
-                <img class="icon off" src="img/fullscreen.png" />
-                <img class="icon on" src="img/windowed.png" />
-            </a>
-
-            <a href="javascript:void(0)" id="sceneListToggle">
-                <img class="icon off" src="img/expand.png" />
-                <img class="icon on" src="img/collapse.png" />
-            </a>
-        </div>
-        <script>
-            $(window).on("load", function () {
-                $(".loading").fadeOut(200);
-                $(".loader").fadeOut(1000);
-            });
-        </script>
-        <script src="vendor/screenfull.min.js"></script>
-        <script src="vendor/bowser.min.js"></script>
-        <script src="vendor/marzipano.js"></script>
-
-        <script src="data.js"></script>
-        <script src="index.js"></script>
-    </body>
+	<head>
+		<title>AVBIL Virtual Tour</title>
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"
+		/>
+		<style>
+			@-ms-viewport {
+				width: device-width;
+			}
+		</style>
+		<link rel="stylesheet" href="vendor/reset.min.css" />
+		<link rel="stylesheet" href="style.css" />
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div class="loader">
+			<div>
+				<p class="loading text">
+					<image id="load-logo" src="img\logo.png"></image>
+					<b id="load-text"> AVBIL Virtual Tour</b>
+				</p>
+				<p class="loading load-img">
+					<image src="img\spinner.gif"></image>
+				</p>
+				<p id="attribution" class="loading text">
+					Made by Lakshyajeet Singh Jalal
+				</p>
+			</div>
+		</div>
+
+		<div class="content multiple-scenes view-control-buttons">
+			<div id="pano"></div>
+
+			<div id="sceneList">
+				<ul class="scenes">
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="0-main-entrance"
+					>
+						<li class="text">Main Entrance</li>
+					</a>
+
+					<a href="javascript:void(0)" class="scene" data-id="1-gate">
+						<li class="text">Gate</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="2-parking"
+					>
+						<li class="text">Parking</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="3-side-entrance-a1"
+					>
+						<li class="text">Side Entrance A1</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="4-side-entrance-a2"
+					>
+						<li class="text">Side Entrance A2</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="5-side-entrance-a3"
+					>
+						<li class="text">Side Entrance A3</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="6-1st-floor-north-west"
+					>
+						<li class="text">1st Floor North West</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="7-1sr-floor-north"
+					>
+						<li class="text">1sr Floor North</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="8-1st-floor-north-east"
+					>
+						<li class="text">1st Floor North East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="9-staircase-b----1st-floor"
+					>
+						<li class="text">Staircase B - 1st Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="10-1st-floor-east"
+					>
+						<li class="text">1st Floor East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="11-tap-area-b---1st-floor"
+					>
+						<li class="text">Tap Area B - 1st Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="12-ramp---1st-floor"
+					>
+						<li class="text">Ramp - 1st Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="13-1st-floor-south-east"
+					>
+						<li class="text">1st Floor South East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="14-1st-floor-south"
+					>
+						<li class="text">1st Floor South</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="15-1st-floor-south-west"
+					>
+						<li class="text">1st Floor South West</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="16-staircase-a---1st-floor"
+					>
+						<li class="text">Staircase A - 1st Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="17-1st-floor-west-a"
+					>
+						<li class="text">1st Floor West A</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="18-tap-area-a---1st-floor"
+					>
+						<li class="text">Tap Area A - 1st Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="19-1st-floor-west-b"
+					>
+						<li class="text">1st Floor West B</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="20-vp-office-area-staircase"
+					>
+						<li class="text">VP Office Area Staircase</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="21-vp-office-area"
+					>
+						<li class="text">VP Office Area</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="22-entrance-hall"
+					>
+						<li class="text">Entrance Hall</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="23-entrance-hall-staircase"
+					>
+						<li class="text">Entrance Hall Staircase</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="24-entrance-hall-sarasvati-stutue"
+					>
+						<li class="text">Entrance Hall Sarasvati Stutue</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="25-ground-floor-north-west"
+					>
+						<li class="text">Ground Floor North West</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="26-ground-floor-north"
+					>
+						<li class="text">Ground Floor North</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="27-ground-floor-north-east"
+					>
+						<li class="text">Ground Floor North East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="28-staircase-b---ground-floor"
+					>
+						<li class="text">Staircase B - Ground Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="29-ground-floor-east"
+					>
+						<li class="text">Ground Floor East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="30-tap-area-b---ground-floor"
+					>
+						<li class="text">Tap Area B - Ground Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="31-ramp---ground-floor"
+					>
+						<li class="text">Ramp - Ground Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="32-ground-floor-south-east"
+					>
+						<li class="text">Ground Floor South East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="33-ground-floor-south"
+					>
+						<li class="text">Ground Floor South</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="34-ground-floor-south-west"
+					>
+						<li class="text">Ground Floor South West</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="35-staircase-a---ground-floor"
+					>
+						<li class="text">Staircase A - Ground Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="36-ground-floor-west-a"
+					>
+						<li class="text">Ground Floor West A</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="37-tap-area-a---ground-floor"
+					>
+						<li class="text">Tap Area A - Ground Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="38-ground-floor-west-b"
+					>
+						<li class="text">Ground Floor West B</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="39-mad-wing-1"
+					>
+						<li class="text">MAD Wing 1</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="40-mad-wing-2"
+					>
+						<li class="text">MAD Wing 2</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="41-av-room"
+					>
+						<li class="text">A.V. Room</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="42-biology-lab"
+					>
+						<li class="text">Biology Lab</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="43-chemistry-lab"
+					>
+						<li class="text">Chemistry Lab</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="44-computer-lab-junior"
+					>
+						<li class="text">Computer Lab (Junior)</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="45-computer-lab-senior"
+					>
+						<li class="text">Computer Lab (Senior)</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="46-library"
+					>
+						<li class="text">Library</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="47-music-room-1"
+					>
+						<li class="text">Music Room 1</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="48-music-room-2"
+					>
+						<li class="text">Music Room 2</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="49-physics-lab"
+					>
+						<li class="text">Physics Lab</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="50-sick-room"
+					>
+						<li class="text">Sick Room</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="51-sports-room"
+					>
+						<li class="text">Sports Room</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="52-visitors-room"
+					>
+						<li class="text">Visitors&#39; Room</li>
+					</a>
+
+					<a href="javascript:void(0)" class="scene" data-id="53-mid">
+						<li class="text">Mid</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="54-assembly-ground"
+					>
+						<li class="text">Assembly Ground</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="55-badminton-court"
+					>
+						<li class="text">Badminton Court</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="56-main-staircase-1-2"
+					>
+						<li class="text">Main Staircase 1-2</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="57-ramp-1-2"
+					>
+						<li class="text">Ramp 1-2</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="58-ramp-g-1"
+					>
+						<li class="text">Ramp G-1</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="59-main-staircase-g-1"
+					>
+						<li class="text">Main Staircase G-1</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="60-staircase-a-1-2"
+					>
+						<li class="text">Staircase A 1-2</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="61-staircase-a-g-1"
+					>
+						<li class="text">Staircase A G-1</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="62-staircase-b-1-2"
+					>
+						<li class="text">Staircase B 1-2</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="63-staircase-b-g-1"
+					>
+						<li class="text">Staircase B G-1</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="64-2nd-floor-north-west"
+					>
+						<li class="text">2nd Floor North West</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="65-2nd-floor-north"
+					>
+						<li class="text">2nd Floor North</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="66-2nd-floor-north-east"
+					>
+						<li class="text">2nd Floor North East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="67-staircase-b---2nd-floor"
+					>
+						<li class="text">Staircase B - 2nd Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="68-2nd-floor-east"
+					>
+						<li class="text">2nd Floor East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="69-tap-area-b---2nd-floor"
+					>
+						<li class="text">Tap Area B - 2nd Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="70-ramp---2nd-floor"
+					>
+						<li class="text">Ramp - 2nd Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="71-2nd-floor-south-east"
+					>
+						<li class="text">2nd Floor South East</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="72-2nd-floor-south"
+					>
+						<li class="text">2nd Floor South</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="73-2nd-floor-south-west"
+					>
+						<li class="text">2nd Floor South West</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="74-staircase-a---2nd-floor"
+					>
+						<li class="text">Staircase A - 2nd Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="75-2nd-floor-west-a"
+					>
+						<li class="text">2nd Floor West A</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="76-tap-area-a---2nd-floor"
+					>
+						<li class="text">Tap Area A - 2nd Floor</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="77-2nd-floor-west-b"
+					>
+						<li class="text">2nd Floor West B</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="78-computer-lab-area-staircase"
+					>
+						<li class="text">Computer Lab Area Staircase</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="79-computer-lab-area"
+					>
+						<li class="text">Computer Lab Area</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="80-science-lab-wing"
+					>
+						<li class="text">Science Lab Wing</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="81-side-entrance-b-1"
+					>
+						<li class="text">Side Entrance B 1</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="82-side-entrance-b-2"
+					>
+						<li class="text">Side Entrance B 2</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="83-side-entrance-b-3"
+					>
+						<li class="text">Side Entrance B 3</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="84-swings-area"
+					>
+						<li class="text">Swings Area</li>
+					</a>
+
+					<a
+						href="javascript:void(0)"
+						class="scene"
+						data-id="85-side-entrance-b-south"
+					>
+						<li class="text">Side Entrance B South</li>
+					</a>
+				</ul>
+			</div>
+
+			<div id="titleBar">
+				<h1 class="sceneName"></h1>
+			</div>
+
+			<a href="https://avbil.net/" target="_blank">
+				<img class="logo-png" src="img/logo.png" />
+			</a>
+
+			<a href="javascript:void(0)" id="autorotateToggle">
+				<img class="icon off" src="img/play.png" />
+				<img class="icon on" src="img/pause.png" />
+			</a>
+
+			<a href="javascript:void(0)" id="fullscreenToggle">
+				<img class="icon off" src="img/fullscreen.png" />
+				<img class="icon on" src="img/windowed.png" />
+			</a>
+
+			<a href="javascript:void(0)" id="sceneListToggle">
+				<img class="icon off" src="img/expand.png" />
+				<img class="icon on" src="img/collapse.png" />
+			</a>
+			<div class="citation">
+				<div class="citationText">
+					<p>
+						Made by
+						<a
+							href="https://www.instagram.com/lakshyajeet_jalal.gg/"
+							target="_blank"
+							>Lakshyajeet Jalal</a
+						>
+					</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(window).on("load", function () {
+				$(".loading").fadeOut(200);
+				$(".loader").fadeOut(1000);
+			});
+		</script>
+		<script src="vendor/screenfull.min.js"></script>
+		<script src="vendor/bowser.min.js"></script>
+		<script src="vendor/marzipano.js"></script>
+
+		<script src="data.js"></script>
+		<script src="index.js"></script>
+	</body>
 </html>
